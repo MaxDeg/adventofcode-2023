@@ -7,6 +7,7 @@ open System.Reflection
 open System.Threading.Tasks
 open System.Diagnostics
 
+[<RequireQualifiedAccess>]
 type PartArgument =
     | [<MainCommand; ExactlyOnce>] InputPath of inputPath: string
 
@@ -15,6 +16,7 @@ type PartArgument =
             match this with
             | InputPath _ -> "Path to the input file"
 
+[<RequireQualifiedAccess>]
 type Arguments =
     | [<CliPrefix(CliPrefix.None)>] Part1 of ParseResults<PartArgument>
     | [<CliPrefix(CliPrefix.None)>] Part2 of ParseResults<PartArgument>
@@ -47,12 +49,12 @@ let execute (execPart1: PartExecutor) (execPart2: PartExecutor) args =
                 printfn $"%s{parser.PrintUsage()}"
             else
                 match results.GetSubCommand() with
-                | Part1 input ->
+                | Arguments.Part1 input ->
                     printfn "Execute Part1"
-                    do! executePart execPart1 (input.GetResult InputPath)
-                | Part2 input ->
+                    do! executePart execPart1 (input.GetResult PartArgument.InputPath)
+                | Arguments.Part2 input ->
                     printfn "Execute Part2"
-                    do! executePart execPart2 (input.GetResult InputPath)
+                    do! executePart execPart2 (input.GetResult PartArgument.InputPath)
         with e ->
             printfn "%s" e.Message
     }

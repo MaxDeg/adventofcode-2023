@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Maxime Degallaix",
+    "classifications": [
+        "AdventOfCode"
+    ],
+    "identity": "AdventOfCode.FSharp",
+    "name": "AdventOfCode Day X template",
+    "shortName": "adventofcode",
+    "symbols": {
+        "day": {
+            "type": "parameter",
+            "description": "The day number of AdventOfCode",
+            "datatype": "text",
+            "replaces": "day-template",
+            "fileRename": "day-template",
+            "defaultValue": "02"
+        }
+    }
+}

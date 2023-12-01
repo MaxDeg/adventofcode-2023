@@ -1,4 +1,4 @@
-﻿module Day01.Part1
+﻿module Part1
 
 open System
 open System.Threading.Tasks

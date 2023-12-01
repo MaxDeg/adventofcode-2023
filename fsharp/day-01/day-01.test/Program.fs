@@ -1,15 +1,14 @@
-module Day01.Test
+module Test
 
 open System
 open Xunit
 
-open Day01
 open Xunit.Abstractions
 open Xunit
 
-type Day01(outputHelper: ITestOutputHelper) =
+type Specs(outputHelper: ITestOutputHelper) =
     [<Fact>]
-    let ``Day 01 - Part1`` () =
+    let ``Part1`` () =
         task {
             // Arrange
             let input =
@@ -61,7 +60,7 @@ type Day01(outputHelper: ITestOutputHelper) =
         """,
                  "336")>]
     [<InlineData("eight5oneights", "88")>]
-    let ``Day 01 - Part2`` (input: string) (expected: string) =
+    let ``Part2`` (input: string) (expected: string) =
         task {
             // Arrange
             // Act
